@@ -29,7 +29,16 @@ def update_counter(file_name, reset=False):
 	>>> update_counter('blah2.txt')
 	2
 	"""
-	pass
+		if reset == True:
+			open(file_name, 'wb') as f:
+			count = 1
+		else:
+			open(file_name, 'w') as f:
+			count = pickle.load(f)
+			count +=1
+
+		pickle.dump(count, f)
+	
 
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
